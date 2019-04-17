@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FizzBuzz", "FizzBuzz\FizzBu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hanoi", "Hanoi\Hanoi.csproj", "{F0302116-8692-4056-A4C0-7EFC38923F1D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Palindrome", "Palindrome\Palindrome.csproj", "{3315CDAC-4F68-4B5C-9A3B-143354C95B80}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StringExtensions", "Palindrome\StringExtensions.csproj", "{3315CDAC-4F68-4B5C-9A3B-143354C95B80}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

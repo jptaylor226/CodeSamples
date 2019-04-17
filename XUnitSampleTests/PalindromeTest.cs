@@ -1,5 +1,5 @@
 ﻿using FluentAssertions;
-using PalindromeNS;
+using StringExtensions;
 using Xunit;
 
 namespace XUnitSampleTests

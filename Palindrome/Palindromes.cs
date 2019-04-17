@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 
-namespace PalindromeNS
+namespace StringExtensions
 {
-    public static class PalindromeExtension
+    public static class Palindromes
     {
         public static bool IsPalindrome(this string value, bool caseSensitive = false)
         {
