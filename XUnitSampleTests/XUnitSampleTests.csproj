@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FizzBuzz\FizzBuzz.csproj" />
+    <ProjectReference Include="..\Hanoi\Hanoi.csproj" />
     <ProjectReference Include="..\PrimeNumbers\PrimeNumbers.csproj" />
     <ProjectReference Include="..\RomanNumerals\RomanNumerals.csproj" />
   </ItemGroup>

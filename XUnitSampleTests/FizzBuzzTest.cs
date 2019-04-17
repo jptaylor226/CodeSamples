@@ -3,18 +3,19 @@ using Xunit;
 using System.Linq;
 using FluentAssertions;
 using System;
+using System.Collections.Generic;
 
 namespace XUnitSampleTests
 {
     public sealed class FizzBuzzTest
     {
+        private readonly FizzBuzzFactory _sut = new FizzBuzzFactory();
         [Fact]
         public void FizzBuzzOnce()
         {
             // setup
-            var sut = new FizzBuzzFactory();
             // execute
-            var result = sut.Take(1).ToList();
+            var result = _sut.Take(1).ToList();
             // assert
             result.Count.Should().Be(1);
             result[0].Value.Should().Be(1);
@@ -24,9 +25,8 @@ namespace XUnitSampleTests
         public void BasicBuzz()
         {
             // setup
-            var sut = new FizzBuzzFactory();
             // execute
-            var result = sut.Take(15).ToList();
+            var result = _sut.Take(15).ToList();
             // assert
             result.Count.Should().Be(15);
             for (var i = 0; i < result.Count; i++)
@@ -67,9 +67,8 @@ namespace XUnitSampleTests
         public void FifthBuzz()
         {
             // setup
-            var sut = new FizzBuzzFactory();
             // execute
-            var result = sut.Where(_ => _.Parsed.Contains("Buzz", StringComparison.CurrentCultureIgnoreCase)).Take(5).Last();
+            var result = _sut.Where(_ => _.Parsed.Contains("Buzz", StringComparison.CurrentCultureIgnoreCase)).Take(5).Last();
             // assert
             result.Value.Should().Be(25);
         }
@@ -79,9 +78,35 @@ namespace XUnitSampleTests
             // setup
             var sut = new FizzBuzzFactory();
             // execute
-            var result = sut.Where(_ => _.Parsed.Contains("Fizz", StringComparison.CurrentCultureIgnoreCase)).Take(8).Last();
+            var result = _sut.Where(_ => _.Parsed.Contains("Fizz", StringComparison.CurrentCultureIgnoreCase)).Take(8).Last();
             // assert
             result.Value.Should().Be(24);
+        }
+        [Fact]
+        public void MultipleEnumerationOK()
+        {
+            // setup
+            // execute
+            var r1 = _sut.Take(5).Last();
+            var r2 = _sut.Take(5).Last();
+            // assert
+            r1.Value.Should().Be(r2.Value);
+            r1.Parsed.Should().Be(r2.Parsed);
+        }
+        [Fact]
+        public void LuckyNumbers()
+        {
+            // setup
+            _sut.SetBuzzwords(new Dictionary<int, string>
+            {
+                { 7, "Herp"},
+                { 13, "Derp"},
+                { 17, "Lerp" }
+            });
+            // execute
+            var result = _sut.Take(7 * 13 * 17).Last();
+            // assert
+            result.Parsed.Should().Be("HerpDerpLerp");
         }
     }
 }

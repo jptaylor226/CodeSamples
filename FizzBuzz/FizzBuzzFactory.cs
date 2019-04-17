@@ -6,7 +6,7 @@ namespace FizzBuzz
 {
     public sealed class FizzBuzzFactory : IEnumerable<FizzBuzzItem>
     {
-        public IDictionary<int, string> _buzzwords = new Dictionary<int, string>
+        private readonly IDictionary<int, string> _buzzwords = new Dictionary<int, string>
         {
             { 3, "Fizz" },
             { 5, "Buzz" }
@@ -20,6 +20,14 @@ namespace FizzBuzz
         IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
+        }
+        public void SetBuzzwords(IDictionary<int, string> buzzwords)
+        {
+            _buzzwords.Clear();
+            foreach (var pair in buzzwords)
+            {
+                _buzzwords.Add(pair.Key, pair.Value);
+            }
         }
     }
 }
