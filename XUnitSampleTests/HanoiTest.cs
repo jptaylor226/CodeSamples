@@ -21,7 +21,7 @@ namespace XUnitSampleTests
         [InlineData(8, 255)]
         [InlineData(9, 511)]
         [InlineData(10, 1023)]
-        public void OneKMoves(short discs, int moves)
+        public void OneKMoves(sbyte discs, int moves)
         {
             // setup
             // execute

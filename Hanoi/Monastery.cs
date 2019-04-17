@@ -13,18 +13,18 @@ namespace Hanoi
             _locations.AddRange((PegLocation[])Enum.GetValues(typeof(PegLocation)));
         }
         public IEnumerable<DiscMove> Moves => _moves;
-        public void MoveDisks(short count, PegLocation origin, PegLocation destination)
+        public void MoveDisks(sbyte count, PegLocation origin, PegLocation destination)
         {
             if (count < 1) return;
             var intermediate = _locations.Where(_ => _ != origin && _ != destination).Single();
-            MoveDisks((short)(count - 1), origin, intermediate);
+            MoveDisks((sbyte)(count - 1), origin, intermediate);
             _moves.Add(new DiscMove
             {
                 Id = count,
                 Origin = origin,
                 Destination = destination
             });
-            MoveDisks((short)(count - 1), intermediate, destination);
+            MoveDisks((sbyte)(count - 1), intermediate, destination);
         }
     }
 }
