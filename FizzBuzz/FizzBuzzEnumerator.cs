@@ -4,13 +4,13 @@ using System.Linq;
 
 namespace FizzBuzz
 {
-    internal class FizzBuzzEnumerator : IEnumerator<FizzBuzzItem>
+    internal sealed class FizzBuzzEnumerator : IEnumerator<FizzBuzzItem>
     {
         private readonly IDictionary<int, string> _buzzwords;
-        private FizzBuzzItem _current;
-        public FizzBuzzItem Current => _current;
 
-        object IEnumerator.Current => _current;
+        public FizzBuzzItem Current { get; private set; }
+
+        object IEnumerator.Current => Current;
 
         public FizzBuzzEnumerator(IDictionary<int, string> buzzwords)
         {
@@ -18,28 +18,28 @@ namespace FizzBuzz
         }
         public void Dispose()
         {
-            _current = null;
+            Current = null;
         }
 
         public bool MoveNext()
         {
-            if (_current == null)
+            if (Current == null)
             {
-                _current = new FizzBuzzItem { Value = 0 };
+                Current = new FizzBuzzItem { Value = 0 };
             }
-            _current = new FizzBuzzItem
+            Current = new FizzBuzzItem
             {
-                Value = _current.Value + 1,
+                Value = Current.Value + 1,
             };
-            _current.Parsed = 
-                string.Concat(_buzzwords.Keys.Where(_ => _current.Value % _ == 0).Select(_ => _buzzwords[_]));
-            if (string.IsNullOrEmpty(_current.Parsed)) _current.Parsed = _current.Value.ToString();
+            Current.Parsed = 
+                string.Concat(_buzzwords.Keys.Where(_ => Current.Value % _ == 0).Select(_ => _buzzwords[_]));
+            if (string.IsNullOrEmpty(Current.Parsed)) Current.Parsed = Current.Value.ToString();
             return true;    
         }
 
         public void Reset()
         {
-            _current = null;
+            Current = null;
         }
     }
 }
