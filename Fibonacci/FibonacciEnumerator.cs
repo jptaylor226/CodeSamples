@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Fibonacci
 {
@@ -13,7 +11,9 @@ namespace Fibonacci
         object IEnumerator.Current => Current;
 
         public void Dispose()
-        {}
+        {
+            // No depedencies on external resources
+        }
 
         public bool MoveNext()
         {

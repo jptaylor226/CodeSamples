@@ -22,7 +22,7 @@ namespace StringExtensions
         }
         public static T[] Reverse<T>(this T[] values)
         {
-            if (values == null) return null;
+            if (values == null) return new T[] { };
             var result = new T[values.Length];
             values.CopyTo(result, 0);
             var end = result.Length - 1;
