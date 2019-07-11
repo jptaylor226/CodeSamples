@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace PrimeNumbers
 {
@@ -13,23 +16,31 @@ namespace PrimeNumbers
 
             var result = true;
             var squareRoot = (long)Math.Sqrt(value);
-            for (long i = 3; result && i <= squareRoot; i += 2)
-            {
-                result = value % i != 0;
-            }
+            Parallel.For(1, (squareRoot + 1) / 2, (i, state) =>
+                {
+                    if  (value % ((i << 1) | 1) == 0)
+                    {
+                        result = false;
+                        state.Break();
+                    }
+                });
             return result;
         }
         public static IEnumerable<long> Factors(this long value)
         {
             if (value < 2) return new List<long>();
-            var result = new List<long>{1};
             var squareRoot = (long)Math.Sqrt(value);
-            for (long i = 2; i <= squareRoot; i ++)
+            var factors = new ConcurrentQueue<long>(new[] { 1L, value });
+            Parallel.For(2, squareRoot + 1, (i) =>
             {
-                if (value % i == 0) result.Add(i);
-            }
-            result.Add(value);
-            return result;
+                if (value % i == 0)
+                {
+                    factors.Enqueue(i);
+                    factors.Enqueue(value / i);
+                }
+            });
+
+            return factors.OrderBy(_ => _).Distinct();
         }
     }
 }

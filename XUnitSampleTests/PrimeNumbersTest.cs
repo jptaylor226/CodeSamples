@@ -194,6 +194,8 @@ namespace XUnitSampleTests
         [InlineData(982451653, true)]
         [InlineData(long.MaxValue, false)]
         [InlineData(long.MaxValue - 24, true)]
+        [InlineData(961, false)]
+        [InlineData(899, false)]
         // Source: https://primes.utm.edu/lists/2small/0bit.html
         public void IsPrimeTest(long value, bool isPrime)
         {
@@ -203,6 +205,7 @@ namespace XUnitSampleTests
             // assert
             result.Should().Be(isPrime);
         }
+
         [Fact]
         public void BigLongPrimeTest()
         {
@@ -229,6 +232,19 @@ namespace XUnitSampleTests
             result[1].Should().Be(prime);
             result.Last().Should().Be(value);
         }
-
+        [Theory]
+        [InlineData(360, new long[] {  1, 2, 3, 4, 5, 6, 8, 9, 10, 12, 15,
+                                      18, 20, 24, 30, 36, 40, 45, 60, 72, 90,
+                                     120, 180, 360})]
+        [InlineData(121, new long[] {  1, 11, 121})]
+        [InlineData((long)49979687 * (long)49979687, new long[] { 1, 49979687, 2497969112617969 })]
+        public void FactorsTest(long value, long[] output)
+        {
+            // setup
+            // execute
+            var result = value.Factors().ToList();
+            // assert
+            result.Should().BeEquivalentTo(output);
+        }
     }
 }

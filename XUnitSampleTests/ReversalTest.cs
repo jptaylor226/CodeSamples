@@ -34,5 +34,18 @@ namespace XUnitSampleTests
             result.Should().Be(output);
 
         }
+        [Theory]
+        [InlineData(null, null)]
+        [InlineData(new[] { 2, 3, 5, 7 }, new[] { 7, 5, 3, 2 })]
+        [InlineData(new[] { 3 }, new[] { 3 })]
+        [InlineData(new int[] { }, new int[] { })]
+        public void ReverseArrayTest(int[] input, int[] output)
+        {
+            // setup
+            // execute
+            var result = input.Reverse();
+            // aseert
+            result.Should().BeEquivalentTo(output);
+        }
     }
 }
