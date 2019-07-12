@@ -17,7 +17,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hanoi", "Hanoi\Hanoi.csproj
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StringExtensions", "Palindrome\StringExtensions.csproj", "{3315CDAC-4F68-4B5C-9A3B-143354C95B80}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fibonacci", "Fibonacci\Fibonacci.csproj", "{4A0C7DA4-89A0-4140-BFDE-BB1083CE3F7D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fibonacci", "Fibonacci\Fibonacci.csproj", "{4A0C7DA4-89A0-4140-BFDE-BB1083CE3F7D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8838D60F-2807-4A1B-A5DA-7FC12FB4D071}"
+	ProjectSection(SolutionItems) = preProject
+		sonar.properties = sonar.properties
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
