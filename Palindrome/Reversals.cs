@@ -8,30 +8,15 @@ namespace StringExtensions
     {
         public static string Reverse(this string value)
         {
-            if (value == null) return value;
-            var characters = value.ToCharArray().Reverse();
-            return new string(characters);
+            return null;
         }
         public static string ReverseSentence(this string value)
         {
-            if (value == null) return value;
-            var words = value.Split(' ');
-            var stringBuilder = new StringBuilder();
-            stringBuilder.AppendJoin(' ', words.Reverse());
-            return stringBuilder.ToString();
+            return null;
         }
         public static T[] Reverse<T>(this T[] values)
         {
-            if (values == null || values.Length < 2) return values;
             var result = new T[values.Length];
-            values.CopyTo(result, 0);
-            var end = result.Length - 1;
-            for (var i = 0; i < end; i++, end--)
-            {
-                var temp = result[i];
-                result[i] = result[end];
-                result[end] = temp;
-            }
             return result;
         }
     }

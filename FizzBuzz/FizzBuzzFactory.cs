@@ -13,13 +13,14 @@ namespace FizzBuzz
 
         public IEnumerator<FizzBuzzItem> GetEnumerator()
         {
-            return new FizzBuzzEnumerator(_buzzwords);
+            throw new System.NotImplementedException();
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return GetEnumerator();
+            throw new System.NotImplementedException();
         }
+
         public void SetBuzzwords(IDictionary<int, string> buzzwords)
         {
             _buzzwords.Clear();

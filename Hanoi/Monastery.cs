@@ -15,16 +15,6 @@ namespace Hanoi
         public IEnumerable<DiscMove> Moves => _moves;
         public void MoveDisks(sbyte count, PegLocation origin, PegLocation destination)
         {
-            if (count < 1) return;
-            var intermediate = _locations.Single(_ => _ != origin && _ != destination);
-            MoveDisks((sbyte)(count - 1), origin, intermediate);
-            _moves.Add(new DiscMove
-            {
-                Id = count,
-                Origin = origin,
-                Destination = destination
-            });
-            MoveDisks((sbyte)(count - 1), intermediate, destination);
         }
     }
 }

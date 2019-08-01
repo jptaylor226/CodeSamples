@@ -7,12 +7,12 @@ namespace Fibonacci
     {
         public IEnumerator<long> GetEnumerator()
         {
-            return new FibonacciEnumerator();
+            throw new System.NotImplementedException();
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return GetEnumerator();
+            throw new System.NotImplementedException();
         }
     }
 }
