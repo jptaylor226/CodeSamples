@@ -5,14 +5,19 @@ namespace Fibonacci
 {
     public class FibonacciFactory : IEnumerable<long>
     {
+        
+ 
         public IEnumerator<long> GetEnumerator()
         {
-            throw new System.NotImplementedException();
+            IEnumerator<long> fibonacciEnumerator = new FibonacciEnumerator();
+                       
+            return fibonacciEnumerator;
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            throw new System.NotImplementedException();
+            return new FibonacciEnumerator();
         }
+       
     }
 }

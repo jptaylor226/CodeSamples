@@ -7,18 +7,27 @@ namespace Fibonacci
     {
         private long _prior = 0;
 
-        public long Current => throw new System.NotImplementedException();
+        public long Current { get; set; }
 
-        object IEnumerator.Current => throw new System.NotImplementedException();
+        object IEnumerator.Current => new List<long>();
+
+        public FibonacciEnumerator()
+        {
+            
+
+
+        }
+
+
 
         public void Dispose()
         {
-            throw new System.NotImplementedException();
+            
         }
 
         public bool MoveNext()
         {
-            throw new System.NotImplementedException();
+            return Current == 1;
         }
 
         public void Reset()

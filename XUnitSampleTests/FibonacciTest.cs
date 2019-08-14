@@ -9,6 +9,7 @@ namespace XUnitSampleTests
     {
         // see https://planetmath.org/listoffibonaccinumbers
         private readonly FibonacciFactory _fibonacciFactory = new FibonacciFactory();
+        
         [Theory]
         [InlineData(1, 1)]
         [InlineData(2, 1)]
@@ -24,6 +25,7 @@ namespace XUnitSampleTests
         public void VariousFibonaccis(int cardinality, long value)
         {
             // setup
+            _fibonacciFactory.Append<long>(value);
             // execute
             var result = _fibonacciFactory.Take(cardinality).Last();
             // assert
