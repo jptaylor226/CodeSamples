@@ -8,7 +8,24 @@ namespace StringExtensions
     {
         public static string Reverse(this string value)
         {
-            return null;
+            string retVal = String.Empty;
+
+            if (string.IsNullOrEmpty(value) == false)
+            {
+                char[] myArrray = value.ToCharArray();
+
+                for (int i = value.Length - 1; i >= 0; i--)
+                {
+                    retVal += myArrray[i].ToString();
+                }
+            }
+            else
+            {
+                return null;
+            }
+        
+
+            return retVal;
         }
         public static string ReverseSentence(this string value)
         {

@@ -17,6 +17,9 @@ namespace XUnitSampleTests
             // setup
             // execute
             var result = input.Reverse();
+
+
+
             // aseert
             result.Should().Be(output);
         }
